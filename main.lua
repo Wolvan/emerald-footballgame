@@ -1,11 +1,13 @@
 --A game by Davierocket/Mint
 --The goal of this game is to pelt Emerald with Footballs until he becomes a MAN
 --Should start off with a menu which leads into an animation/cutscene and the main game. 
---During the main game, SPACE or click the button to launch a football at emerald. After 48 (or a random number between 40 and 60) balls, the game is over and it 
+--During the main game, SPACE or click the button to launch a football at emerald. After BALL_THROW_WIN_COUNT = 48 (or a random number between 40 and 60) balls, the game is over and it 
 --loads a game over screen for quitting or restarting the game again.
 
 --And yes, I comment a lot.
 
+--Require a central constants file that contains settings like win number
+require "constants"
 
 --INITIAL STUFF
 require "menu"
@@ -83,7 +85,7 @@ function love.keypressed(key)
 				end
 --tosses ball on space key			
 	if gamestate == "playing" then --So players don't rack up points while still in the menu
-		if key == "space" then 
+		if key == "space" and bro.ballCount < BALL_THROW_WIN_COUNT then 
 			throwYerBall() 
 		end
 		if key == "z" then 

@@ -27,11 +27,11 @@ function taunt()
 end
 
 function throwYerBall()
-	if bro.ballCount <48 then
+	if bro.ballCount < BALL_THROW_WIN_COUNT then
 		bro.broPic = bro.throwAnim --this still doesn't want to update the picture for some reason
 		bro.ballCount = bro.ballCount + 1
 	end
-	if bro.ballCount == 48 then
+	if bro.ballCount == BALL_THROW_WIN_COUNT then
 		winNoise:play()
 		bgm:stop()
 	end
